@@ -9,9 +9,7 @@ const parseMail = require("mailparser").simpleParser;
  * @returns {Promise<Object>}
  */
 function toJSON(source) {
-  return parseMail(source)
-    .then(attachment)
-    .then(convert);
+  return parseMail(source).then(attachment).then(convert);
 }
 
 /**
@@ -25,9 +23,7 @@ function convert(contents) {
     return converter.getJSON();
   }
 
-  return new Error(
-    "Invalid mail content. Expected an HTML attachment with Kindle notes."
-  );
+  throw new Error("Email not in compatible format for parsing");
 }
 
 /**
@@ -39,13 +35,13 @@ function convert(contents) {
 function attachment(mail) {
   if (mail.attachments) {
     const attachments = mail.attachments.filter(
-      attachment => attachment.contentType === "text/html"
+      (attachment) => attachment.contentType === "text/html"
     );
 
     if (attachments.length) return attachments[0].content.toString("utf8");
   }
 
-  return new Error("No valid HTML attachment");
+  throw new Error("Kindle HTML attachment not found");
 }
 
 module.exports = toJSON;

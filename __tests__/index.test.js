@@ -16,6 +16,8 @@ function readMail(filename = "atomic-design") {
 
 describe("kindle-email-to-json", () => {
   it("converts export with a note", () => {
+    expect.assertions();
+
     return readMail()
       .then(toJSON)
       .then((data) => {
@@ -24,10 +26,19 @@ describe("kindle-email-to-json", () => {
   });
 
   it("converts export with page data and multiple authors", () => {
+    expect.assertions();
+
     return readMail("machine-platform-crowd")
       .then(toJSON)
       .then((data) => {
         expect(data).toMatchSnapshot();
       });
+  });
+
+  it("throws error when email lacks an attachment", () => {
+    expect.assertions();
+
+    const promise = readMail("no-attachment").then(toJSON);
+    expect(promise).rejects.toThrowError();
   });
 });
