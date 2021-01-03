@@ -1,7 +1,7 @@
 {
   "name": "kindle-email-to-json",
   "description": "Convert an email export of Kindle notes into a JSON object",
-  "version": "1.7.0",
+  "version": "2.0.0",
   "main": "index.js",
   "types": "index.d.ts",
   "author": {
