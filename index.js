@@ -5,7 +5,7 @@ const parseMail = require("mailparser").simpleParser;
  * Convert a Kindle notes email export into a JSON object. Rejects
  * if the mail isn't a valid Kindle notes export. The email is
  * expected to contain at least one HTML attachment.
- * @param {Buffer|Stream|String} source
+ * @param {import("mailparser").Source} source
  * @returns {Promise<Object>}
  */
 function toJSON(source) {

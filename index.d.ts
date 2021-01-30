@@ -1,5 +1,4 @@
-/// <reference types="node" />
-import { Readable } from "stream";
+import { Source } from "mailparser";
 
 interface KindleEmailHighlight {
   color?: string;
@@ -19,8 +18,6 @@ interface KindleEmailData {
   };
 }
 
-declare function toJSON(
-  source: Readable | ReadableStream | Blob
-): Promise<KindleEmailData>;
+declare function toJSON(source: Source): Promise<KindleEmailData>;
 
 export = toJSON;
