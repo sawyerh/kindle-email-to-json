@@ -18,7 +18,7 @@
     "mailparser": "^3.5.0"
   },
   "devDependencies": {
-    "@types/node": "^14.14.22",
-    "jest": "^26.6.3"
+    "@types/node": "^18.8.4",
+    "jest": "^29.1.2"
   }
 }
